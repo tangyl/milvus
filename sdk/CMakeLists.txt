@@ -91,6 +91,8 @@ target_link_libraries(milvus_sdk
         )
 
 install(TARGETS milvus_sdk DESTINATION lib)
+file(GLOB header_files include/*.h)
+install(FILES ${header_files} DESTINATION include/milvus)      
 
 add_subdirectory(examples)
 
