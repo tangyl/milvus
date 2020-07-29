@@ -75,13 +75,8 @@ set(grpc_service_files
         grpc-gen/gen-status/status.pb.cc
         )
 
-set(grpc_lib
-        grpcpp_channelz
-        grpc++
-        grpc
-        grpc_protobuf
-        grpc_protoc
-        )
+find_package(gRPC REQUIRED)
+set(grpc_lib gRPC::grpc++)      
 
 add_library(milvus_sdk SHARED
         ${interface_files}
@@ -91,7 +86,6 @@ add_library(milvus_sdk SHARED
 
 target_link_libraries(milvus_sdk
         ${grpc_lib}
-        zlib
         dl
         z
         )
